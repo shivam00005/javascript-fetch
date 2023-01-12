@@ -1,9 +1,17 @@
 import data from './pokedex.json' assert { type: 'json' };
 const output = document.getElementById("output");
 
-let html = "";
-for (let i = 0; i < data.length; i++) {
-    html += `<p>${data[i].name}: ${data[i].value}</p>`;
+
+
+for (let i = 0; i < data.pokemon.length; i++) {
+
+    let div = document.createElement("div");
+    div.className = "card";
+
+
+    div.innerHTML = `<h2>${data.pokemon[i].id}</h2>
+    <img src="${data.pokemon[i].img}"/>`
+
+    output.appendChild(div);
 }
-console.log(data.pokemon.length)
-output.innerHTML = html;
+
