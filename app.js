@@ -6,18 +6,31 @@ const output = document.getElementById("output");
 for (let i = 0; i < data.pokemon.length; i++) {
 
   let div = document.createElement("div");
-  let next_evolution = document.createElement("div");
-  let prev_evolution = document.createElement("div");
   div.className = "card";
+  let inner = document.createElement("div");
+  inner.className = "inner";
+  let next_evolution = document.createElement("div");
+  next_evolution.className = 'next-evolution';
+  let prev_evolution = document.createElement("div");
+  prev_evolution.className = "prev-evolution";
+  let backpage = document.createElement("div");
+  backpage.className = "backpage";
 
 
-  div.innerHTML = `
-    <div class = 'image'>
-      <img src ="${data.pokemon[i].img}">
+  inner.innerHTML = `
+    <div class = 'card-front'>
+
+    <div class='front-inner-text'>
+    <h3>Rank: ${data.pokemon[i].num}</h3>
+    <h3 class='name'> ${data.pokemon[i].name}</h3>
     </div>
+
+      <img src ="${data.pokemon[i].img}">
+    </div>`
+
+  backpage.innerHTML = `
     <div class = 'content'>  
-      <h3>Rank: ${data.pokemon[i].num}</h3>
-      <h3>Name: ${data.pokemon[i].name}</h3>
+     <h2>${data.pokemon[i].name} Information</h2>
       <h3>Type: ${data.pokemon[i].type}</h3>
       <h3>Height: ${data.pokemon[i].height}</h3>
       <h3>Weight: ${data.pokemon[i].weight}</h3>
@@ -27,7 +40,7 @@ for (let i = 0; i < data.pokemon.length; i++) {
       <h3>Spawn Chance: ${data.pokemon[i].spawn_chance}</h3>
       <h3>Avg Spawn: ${data.pokemon[i].spawn_time}</h3>
       <h3>Multiplayer: ${data.pokemon[i].multipliers}</h3>
-      <h3>Weakness: ${data.pokemon[i].weaknesses}</h3>
+      <p>Weakness: ${data.pokemon[i].weaknesses}</p>
  </div>
       
 `;
@@ -44,10 +57,11 @@ for (let i = 0; i < data.pokemon.length; i++) {
       <h3>Rank: ${data.pokemon[i].next_evolution[j].num}</h3>
       <h3>Name: ${data.pokemon[i].next_evolution[j].name}</h3>
   `;
-      div.appendChild(next_evolution);
 
     }
-  } else if (data.pokemon[i].hasOwnProperty('prev_evolution')) {
+    backpage.appendChild(next_evolution);
+  }
+  if (data.pokemon[i].hasOwnProperty('prev_evolution')) {
     for (let j = 0; j < data.pokemon[i].prev_evolution.length; j++) {
 
       prev_evolution.innerHTML += `
@@ -56,13 +70,15 @@ for (let i = 0; i < data.pokemon.length; i++) {
       <h3>Name: ${data.pokemon[i].prev_evolution[j].name}</h3>
   `;
 
-      div.appendChild(prev_evolution);
     }
+    backpage.appendChild(prev_evolution);
   }
 
 
 
   output.appendChild(div);
+  div.appendChild(inner)
+  inner.appendChild(backpage);
 
 }
 
