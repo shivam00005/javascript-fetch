@@ -288,12 +288,12 @@ for (let k = 0; k < data.pokemon.length; k++) {
 
 }
 
-console.log(totalWeight)
-let averageHeight = totalHeight / data.pokemon.length;
+
+let averageHeight = (totalHeight / data.pokemon.length).toFixed(2);
 let minHeight = Math.min(...height);
 let heightMax = Math.max(...height);
 
-let averageWeight = totalWeight / data.pokemon.length;;
+let averageWeight = (totalWeight / data.pokemon.length).toFixed(2);
 let minWeight = Math.min(...weight);
 let macWeight = Math.max(...weight);
 
@@ -303,16 +303,16 @@ document.getElementById('statistics').innerHTML = `
 
 <div class=" heightstatistics">
 <h1>Height Statistic</h1>
-<h3> Average Height = ${averageHeight} </h3>
-<h3> Minimum Height = ${minHeight} </h3>
-<h3> Maximum Height = ${heightMax} </h3>
+<h3> Average Height = ${averageHeight} m </h3>
+<h3> Minimum Height = ${minHeight} m</h3>
+<h3> Maximum Height = ${heightMax} m</h3>
 </div>
 
 <div class=" weightstatistics">
 <h1>Weight Statistic</h1>
-<h3> Average Weight = ${averageWeight} </h3>
-<h3> Minimum Weight = ${minWeight} </h3>
-<h3> Maximum Weight = ${macWeight} </h3>
+<h3> Average Weight = ${averageWeight} kg</h3>
+<h3> Minimum Weight = ${minWeight} kg</h3>
+<h3> Maximum Weight = ${macWeight} kg</h3>
 </div>
 `;
 
