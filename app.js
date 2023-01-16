@@ -9,12 +9,12 @@ for (let i = 0; i < data.pokemon.length; i++) {
   div.className = "card";
   let inner = document.createElement("div");
   inner.className = "inner";
+  let backpage = document.createElement("div");
+  backpage.className = "backpage";
   let next_evolution = document.createElement("div");
   next_evolution.className = 'next-evolution';
   let prev_evolution = document.createElement("div");
   prev_evolution.className = "prev-evolution";
-  let backpage = document.createElement("div");
-  backpage.className = "backpage";
 
 
   inner.innerHTML = `
@@ -81,4 +81,204 @@ for (let i = 0; i < data.pokemon.length; i++) {
   inner.appendChild(backpage);
 
 }
+
+
+const strong_pokemon = document.getElementById('strong_pokemon');
+const weak_pokemon = document.getElementById('weak_pokemon');
+const tallest_pokemon = document.getElementById('tallest_pokemon');
+const heavy_pokemon = document.getElementById('heavy_pokemon');
+
+
+
+let weight = [];
+let height = [];
+let weak = [];
+
+let maxWeight = [];
+let maxHeight = [];
+let weakest = [];
+let strongest = [];
+
+for (let k = 0; k < data.pokemon.length; k++) {
+
+  weight[k] = data.pokemon[k].weight.replace(" kg", '');
+  height[k] = data.pokemon[k].height.replace(" m", '');
+  weak[k] = data.pokemon[k].weaknesses.length;
+
+
+}
+
+for (let k = 0; k < data.pokemon.length; k++) {
+  let div = document.createElement("div");
+  div.className = "card";
+  let inner = document.createElement("div");
+  inner.className = "inner";
+  let backpage = document.createElement("div");
+  backpage.className = "backpage";
+
+  if (data.pokemon[k].weaknesses.length == Math.min(...weak)) {
+    strongest[k] = data.pokemon[k].weaknesses.length;
+
+    inner.innerHTML = `
+    <div class = 'card-front strongest'>
+
+    <div class='front-inner-text'>
+    <h3>Rank: ${data.pokemon[k].num}</h3>
+    <h3 class='name'> ${data.pokemon[k].name}</h3>
+    </div>
+
+      <img src ="${data.pokemon[k].img}">
+    </div>`
+
+    backpage.innerHTML = `
+    <div class = 'content strongest'>  
+     <h2>${data.pokemon[k].name} Information</h2>
+      <h3>Type: ${data.pokemon[k].type}</h3>
+      <h3>Height: ${data.pokemon[k].height}</h3>
+      <h3>Weight: ${data.pokemon[k].weight}</h3>
+      <h3>Candy: ${data.pokemon[k].candy}</h3>
+      <h3>Candy Count: ${data.pokemon[k].candy_count}</h3>
+      <h3>Egg: ${data.pokemon[k].egg}</h3>
+      <h3>Spawn Chance: ${data.pokemon[k].spawn_chance}</h3>
+      <h3>Avg Spawn: ${data.pokemon[k].spawn_time}</h3>
+      <h3>Multiplayer: ${data.pokemon[k].multipliers}</h3>
+      <p>Weakness: ${data.pokemon[k].weaknesses}</p>
+ </div>
+      
+    `
+    inner.appendChild(backpage);
+    div.appendChild(inner);
+    strong_pokemon.appendChild(div);
+
+  }
+  if (data.pokemon[k].weaknesses.length == Math.max(...weak)) {
+    let div = document.createElement("div");
+    div.className = "card";
+    let inner = document.createElement("div");
+    inner.className = "inner";
+    let backpage = document.createElement("div");
+    backpage.className = "backpage";
+    weakest[k] = data.pokemon[k].weaknesses.length;
+    inner.innerHTML = `
+    <div class = 'card-front weak'>
+
+    <div class='front-inner-text'>
+    <h3>Rank: ${data.pokemon[k].num}</h3>
+    <h3 class='name'> ${data.pokemon[k].name}</h3>
+    </div>
+
+      <img src ="${data.pokemon[k].img}">
+    </div>`
+
+    backpage.innerHTML = `
+    <div class = 'content weak'>  
+     <h2>${data.pokemon[k].name} Information</h2>
+      <h3>Type: ${data.pokemon[k].type}</h3>
+      <h3>Height: ${data.pokemon[k].height}</h3>
+      <h3>Weight: ${data.pokemon[k].weight}</h3>
+      <h3>Candy: ${data.pokemon[k].candy}</h3>
+      <h3>Candy Count: ${data.pokemon[k].candy_count}</h3>
+      <h3>Egg: ${data.pokemon[k].egg}</h3>
+      <h3>Spawn Chance: ${data.pokemon[k].spawn_chance}</h3>
+      <h3>Avg Spawn: ${data.pokemon[k].spawn_time}</h3>
+      <h3>Multiplayer: ${data.pokemon[k].multipliers}</h3>
+      <p>Weakness: ${data.pokemon[k].weaknesses}</p>
+ </div>
+      
+    `
+    inner.appendChild(backpage);
+    div.appendChild(inner);
+    weak_pokemon.appendChild(div);
+
+  }
+
+  if (data.pokemon[k].height.replace(" m", '') == Math.max(...height)) {
+    maxHeight[k] = data.pokemon[k].height.replace(" m", '');
+
+    let div = document.createElement("div");
+    div.className = "card";
+    let inner = document.createElement("div");
+    inner.className = "inner";
+    let backpage = document.createElement("div");
+    backpage.className = "backpage";
+    weakest[k] = data.pokemon[k].weaknesses.length;
+    inner.innerHTML = `
+    <div class = 'card-front tall'>
+
+    <div class='front-inner-text'>
+    <h3>Rank: ${data.pokemon[k].num}</h3>
+    <h3 class='name'> ${data.pokemon[k].name}</h3>
+    </div>
+
+      <img src ="${data.pokemon[k].img}">
+    </div>`
+
+    backpage.innerHTML = `
+    <div class = 'content tall'>  
+     <h2>${data.pokemon[k].name} Information</h2>
+      <h3>Type: ${data.pokemon[k].type}</h3>
+      <h3>Height: ${data.pokemon[k].height}</h3>
+      <h3>Weight: ${data.pokemon[k].weight}</h3>
+      <h3>Candy: ${data.pokemon[k].candy}</h3>
+      <h3>Candy Count: ${data.pokemon[k].candy_count}</h3>
+      <h3>Egg: ${data.pokemon[k].egg}</h3>
+      <h3>Spawn Chance: ${data.pokemon[k].spawn_chance}</h3>
+      <h3>Avg Spawn: ${data.pokemon[k].spawn_time}</h3>
+      <h3>Multiplayer: ${data.pokemon[k].multipliers}</h3>
+      <p>Weakness: ${data.pokemon[k].weaknesses}</p>
+ </div>
+      
+    `
+    inner.appendChild(backpage);
+    div.appendChild(inner);
+    tallest_pokemon.appendChild(div);
+
+  }
+  if (data.pokemon[k].weight.replace(" kg", '') == Math.max(...weight)) {
+    maxWeight[k] = data.pokemon[k].weight.replace(" kg", '');
+    let div = document.createElement("div");
+    div.className = "card";
+    let inner = document.createElement("div");
+    inner.className = "inner";
+    let backpage = document.createElement("div");
+    backpage.className = "backpage";
+    weakest[k] = data.pokemon[k].weaknesses.length;
+    inner.innerHTML = `
+    <div class = 'card-front heavy'>
+
+    <div class='front-inner-text'>
+    <h3>Rank: ${data.pokemon[k].num}</h3>
+    <h3 class='name'> ${data.pokemon[k].name}</h3>
+    </div>
+
+      <img src ="${data.pokemon[k].img}">
+    </div>`
+
+    backpage.innerHTML = `
+    <div class = 'content heavy'>  
+     <h2>${data.pokemon[k].name} Information</h2>
+      <h3>Type: ${data.pokemon[k].type}</h3>
+      <h3>Height: ${data.pokemon[k].height}</h3>
+      <h3>Weight: ${data.pokemon[k].weight}</h3>
+      <h3>Candy: ${data.pokemon[k].candy}</h3>
+      <h3>Candy Count: ${data.pokemon[k].candy_count}</h3>
+      <h3>Egg: ${data.pokemon[k].egg}</h3>
+      <h3>Spawn Chance: ${data.pokemon[k].spawn_chance}</h3>
+      <h3>Avg Spawn: ${data.pokemon[k].spawn_time}</h3>
+      <h3>Multiplayer: ${data.pokemon[k].multipliers}</h3>
+      <p>Weakness: ${data.pokemon[k].weaknesses}</p>
+ </div>
+      
+    `
+    inner.appendChild(backpage);
+    div.appendChild(inner);
+    heavy_pokemon.appendChild(div);
+
+  }
+
+
+}
+
+
+
 
