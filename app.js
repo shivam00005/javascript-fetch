@@ -308,7 +308,12 @@ document.getElementById('statistics').innerHTML = `
 <h3> Maximum Height = ${heightMax} </h3>
 </div>
 
-
+<div class=" weightstatistics">
+<h1>Weight Statistic</h1>
+<h3> Average Weight = ${averageWeight} </h3>
+<h3> Minimum Weight = ${minWeight} </h3>
+<h3> Maximum Weight = ${macWeight} </h3>
+</div>
 `;
 
 
