@@ -219,3 +219,21 @@ p {
 .card-front.heavy {
     background-color: rgba(212, 157, 157, 0.692);
 }
+
+.heading.statstics {
+    background-color: rgb(166, 143, 187);
+}
+
+#statistics {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(193, 172, 212, 0.733);
+    padding: 50px;
+    color: white;
+}
+
+.heightstatistics {
+    margin-bottom: 50px;
+}

@@ -279,6 +279,36 @@ for (let k = 0; k < data.pokemon.length; k++) {
 
 }
 
+let totalWeight = 0;
+let totalHeight = 0;
+for (let k = 0; k < data.pokemon.length; k++) {
 
+  totalWeight += parseInt(data.pokemon[k].weight.replace(" kg", ''));
+  totalHeight += parseInt(data.pokemon[k].height.replace(" m", ''));
+
+}
+
+console.log(totalWeight)
+let averageHeight = totalHeight / data.pokemon.length;
+let minHeight = Math.min(...height);
+let heightMax = Math.max(...height);
+
+let averageWeight = totalWeight / data.pokemon.length;;
+let minWeight = Math.min(...weight);
+let macWeight = Math.max(...weight);
+
+
+
+document.getElementById('statistics').innerHTML = `
+
+<div class=" heightstatistics">
+<h1>Height Statistic</h1>
+<h3> Average Height = ${averageHeight} </h3>
+<h3> Minimum Height = ${minHeight} </h3>
+<h3> Maximum Height = ${heightMax} </h3>
+</div>
+
+
+`;
 
 
